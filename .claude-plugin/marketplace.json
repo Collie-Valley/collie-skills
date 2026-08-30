@@ -1,0 +1,29 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "collie-skills",
+  "owner": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "description": "Skills compartidas de Collie Valley para Claude Code: los ritos que no viven en un repo concreto.",
+  "version": "0.1.0",
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "foundry",
+      "source": "./plugins/foundry",
+      "displayName": "Foundry",
+      "description": "Trabajar contra los tableros de Foundry por el MCP foundry-boards, en cualquier proyecto.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Collie Valley",
+        "url": "https://github.com/Collie-Valley"
+      },
+      "repository": "https://github.com/Collie-Valley/collie-skills",
+      "keywords": ["foundry", "foundry-boards", "tablero", "kanban", "mcp"],
+      "category": "productivity"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "foundry",
+  "displayName": "Foundry",
+  "version": "0.1.0",
+  "description": "Trabajar contra los tableros de Foundry por el MCP foundry-boards, en cualquier proyecto.",
+  "author": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "repository": "https://github.com/Collie-Valley/collie-skills",
+  "keywords": ["foundry", "foundry-boards", "tablero", "kanban", "mcp"]
+}
