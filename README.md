@@ -53,9 +53,12 @@ plugins/
 Para editar una skill y verla en vivo, enlaza la carpeta en lugar de copiarla:
 
 ```powershell
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.claude\skills\foundry-tablero" `
+New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude\skills\foundry-tablero" `
   -Target "D:\PROYECTOS\collie-valley\collie-skills\plugins\foundry\skills\foundry-tablero"
 ```
+
+En Windows va **junction**, no `SymbolicLink`: el segundo pide privilegios de administrador y el
+primero no, y para una carpeta hacen lo mismo. En macOS/Linux, `ln -s`.
 
 Así se edita en un solo sitio. Reinicia Claude Code para que la vea. **No hagas las dos cosas**
 (instalar el plugin *y* enlazar): la skill saldría duplicada.
