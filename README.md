@@ -108,6 +108,51 @@ FastAPI y SQLAlchemy en el backend; Astro con islas React en el frontend.
 > Los nombres de las skills y todo lo que llega al entregable —carpetas, clases, funciones,
 > docstrings— van **en inglés**. La prosa de las skills, en español.
 
+## Versiones y publicación
+
+Las versiones las decide [semantic-release](https://semantic-release.gitbook.io/) a partir de los
+mensajes de commit, al fusionar en `main`. Nadie edita un número de versión a mano: el release
+sincroniza `marketplace.json` y los seis `plugin.json` a la vez.
+
+### Qué versión publica cada commit
+
+| Commit | Versión |
+|---|---|
+| `feat(craft): ...` | **minor** — 0.1.0 → 0.2.0 |
+| `fix(stack): ...`, `perf`, `refactor` | **patch** — 0.1.0 → 0.1.1 |
+| `docs(skills): ...` | **patch** (cambia el contenido de una skill) |
+| `feat(stack)!: ...` con `BREAKING CHANGE:` en el cuerpo | **major** — 0.1.0 → 1.0.0 |
+| `docs`, `test`, `ci`, `chore`, `build`, `style` | no publica |
+
+Los *scope* válidos son los plugins (`architecture`, `craft`, `testing`, `security`, `stack`,
+`foundry`) y los transversales (`marketplace`, `release`, `docs`, `skills`, `deps`). `commitlint`
+los verifica en cada PR.
+
+### Instalar desde un release
+
+Cada release publica un zip por plugin y uno con el marketplace completo. El marketplace sigue
+siendo la vía recomendada —se actualiza solo—; los zips sirven para una máquina sin acceso a
+GitHub o para fijar una versión concreta.
+
+```bash
+# un plugin suelto
+unzip collie-architecture-1.0.0.zip -d ~/.claude/plugins/
+```
+
+Reinicia Claude Code para que las cargue.
+
+### Trabajar en el repositorio
+
+```bash
+npm install
+npm run validate                  # JSON, manifiestos y frontmatter de las 49 skills
+node scripts/build-packages.mjs 0.0.0-test   # comprobar que empaqueta
+npm run release:dry               # qué versión saldría (sólo desde main)
+```
+
+`npm run validate` es lo mismo que corre CI: falla si una skill pierde el `name`, si un plugin no
+está declarado en el marketplace, o si las versiones se descoordinan.
+
 ## Añadir una skill
 
 1. Créala en el plugin que le toque: `plugins/<plugin>/skills/<nombre>/SKILL.md`, con
@@ -117,17 +162,23 @@ FastAPI y SQLAlchemy en el backend; Astro con islas React en el frontend.
    se usa, no solo qué hace.
 3. Si el plugin es nuevo, dale su `plugins/<plugin>/.claude-plugin/plugin.json` y añádelo al
    array `plugins` de [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json).
-4. Sube la `version` del plugin (y la del marketplace) al cambiar algo que ya usa el equipo.
+4. **No toques la `version`**: la pone el release a partir de tu mensaje de commit.
 
 ## Estructura
 
 ```
 .claude-plugin/marketplace.json     el catálogo: qué plugins publica este repo
 plugins/
-  foundry/
+  <plugin>/
     .claude-plugin/plugin.json      el manifiesto del plugin
     skills/
-      foundry-tablero/SKILL.md      una carpeta por skill
+      <skill>/SKILL.md              una carpeta por skill
+scripts/
+  validate.mjs                      lo que CI verifica antes de publicar
+  sync-versions.mjs                 propaga la versión a los 7 manifiestos
+  build-packages.mjs                genera los zips del release
+.releaserc.json                     las reglas de versionado
+.github/workflows/                  validate (en PR) y release (en main)
 ```
 
 ## Trabajarla sin instalarla
