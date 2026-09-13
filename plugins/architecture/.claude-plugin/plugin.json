@@ -1,0 +1,12 @@
+{
+  "name": "architecture",
+  "displayName": "Architecture",
+  "version": "0.1.0",
+  "description": "El estándar de arquitectura de Collie: limpia, hexagonal y SOLID, con la regla de dependencias verificada en CI.",
+  "author": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "repository": "https://github.com/Collie-Valley/collie-skills",
+  "keywords": ["clean-architecture", "hexagonal", "solid", "ddd", "python", "fastapi"]
+}

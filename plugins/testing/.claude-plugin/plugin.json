@@ -1,0 +1,12 @@
+{
+  "name": "testing",
+  "displayName": "Testing",
+  "version": "0.1.0",
+  "description": "Cómo se prueba en Collie: la pirámide que la arquitectura hexagonal permite, Playwright para lo que exige navegador, y la evidencia real antes de decir que funciona.",
+  "author": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "repository": "https://github.com/Collie-Valley/collie-skills",
+  "keywords": ["pytest", "playwright", "bdd", "testcontainers", "e2e", "contract-testing"]
+}
