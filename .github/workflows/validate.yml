@@ -1,0 +1,35 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Validar el marketplace
+        run: npm run validate
+
+      - name: Comprobar que el empaquetado funciona
+        run: node scripts/build-packages.mjs 0.0.0-test
+
+      - name: Comprobar los mensajes de commit
+        # Los commits deciden la versión: uno mal formado no publica nada.
+        run: npx commitlint --from origin/${{ github.base_ref || 'main' }} --to HEAD --verbose
+        if: github.event_name == 'pull_request'

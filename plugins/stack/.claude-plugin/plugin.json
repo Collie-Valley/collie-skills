@@ -1,0 +1,12 @@
+{
+  "name": "stack",
+  "displayName": "Stack",
+  "version": "0.1.0",
+  "description": "El stack de Collie: FastAPI y SQLAlchemy en el backend, Astro con islas React en el frontend, y lo que hace que aguante en producción.",
+  "author": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "repository": "https://github.com/Collie-Valley/collie-skills",
+  "keywords": ["fastapi", "python", "astro", "react", "sqlalchemy", "async", "observability"]
+}

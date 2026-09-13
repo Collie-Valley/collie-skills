@@ -22,8 +22,119 @@
         "url": "https://github.com/Collie-Valley"
       },
       "repository": "https://github.com/Collie-Valley/collie-skills",
-      "keywords": ["foundry", "foundry-boards", "tablero", "kanban", "mcp"],
+      "keywords": [
+        "foundry",
+        "foundry-boards",
+        "tablero",
+        "kanban",
+        "mcp"
+      ],
       "category": "productivity"
+    },
+    {
+      "name": "architecture",
+      "source": "./plugins/architecture",
+      "displayName": "Architecture",
+      "description": "El estándar de arquitectura de Collie: limpia, hexagonal y SOLID, con la regla de dependencias verificada en CI.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Collie Valley",
+        "url": "https://github.com/Collie-Valley"
+      },
+      "repository": "https://github.com/Collie-Valley/collie-skills",
+      "keywords": [
+        "clean-architecture",
+        "hexagonal",
+        "solid",
+        "ddd",
+        "python",
+        "fastapi"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "craft",
+      "source": "./plugins/craft",
+      "displayName": "Craft",
+      "description": "El oficio en Collie: las puertas de entrada y salida del trabajo, cómo se escribe y se revisa el código, y cómo se reporta el estado con honestidad.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Collie Valley",
+        "url": "https://github.com/Collie-Valley"
+      },
+      "repository": "https://github.com/Collie-Valley/collie-skills",
+      "keywords": [
+        "definition-of-done",
+        "code-review",
+        "bdd",
+        "spec-driven",
+        "quality"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "testing",
+      "source": "./plugins/testing",
+      "displayName": "Testing",
+      "description": "Cómo se prueba en Collie: la pirámide que la arquitectura hexagonal permite, Playwright para lo que exige navegador, y la evidencia real antes de decir que funciona.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Collie Valley",
+        "url": "https://github.com/Collie-Valley"
+      },
+      "repository": "https://github.com/Collie-Valley/collie-skills",
+      "keywords": [
+        "pytest",
+        "playwright",
+        "bdd",
+        "testcontainers",
+        "e2e",
+        "contract-testing"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "security",
+      "source": "./plugins/security",
+      "displayName": "Security",
+      "description": "La pasada de seguridad en Collie: revisión del diff, secretos y configuración, autenticación y autorización, datos sensibles y dependencias.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Collie Valley",
+        "url": "https://github.com/Collie-Valley"
+      },
+      "repository": "https://github.com/Collie-Valley/collie-skills",
+      "keywords": [
+        "security",
+        "owasp",
+        "authz",
+        "secrets",
+        "pii",
+        "dependencies"
+      ],
+      "category": "development"
+    },
+    {
+      "name": "stack",
+      "source": "./plugins/stack",
+      "displayName": "Stack",
+      "description": "El stack de Collie: FastAPI y SQLAlchemy en el backend, Astro con islas React en el frontend, y lo que hace que aguante en producción.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Collie Valley",
+        "url": "https://github.com/Collie-Valley"
+      },
+      "repository": "https://github.com/Collie-Valley/collie-skills",
+      "keywords": [
+        "fastapi",
+        "python",
+        "astro",
+        "react",
+        "sqlalchemy",
+        "async",
+        "observability"
+      ],
+      "category": "development"
     }
   ]
 }

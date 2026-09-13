@@ -1,0 +1,12 @@
+{
+  "name": "security",
+  "displayName": "Security",
+  "version": "0.1.0",
+  "description": "La pasada de seguridad en Collie: revisión del diff, secretos y configuración, autenticación y autorización, datos sensibles y dependencias.",
+  "author": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "repository": "https://github.com/Collie-Valley/collie-skills",
+  "keywords": ["security", "owasp", "authz", "secrets", "pii", "dependencies"]
+}

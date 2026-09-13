@@ -1,0 +1,107 @@
+{
+  "branches": ["main"],
+  "tagFormat": "v${version}",
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "releaseRules": [
+          { "breaking": true, "release": "major" },
+          { "revert": true, "release": "patch" },
+          { "type": "feat", "release": "minor" },
+          { "type": "fix", "release": "patch" },
+          { "type": "perf", "release": "patch" },
+          { "type": "refactor", "release": "patch" },
+          { "type": "docs", "release": false },
+          { "type": "docs", "scope": "skills", "release": "patch" },
+          { "type": "style", "release": false },
+          { "type": "test", "release": false },
+          { "type": "build", "release": false },
+          { "type": "ci", "release": false },
+          { "type": "chore", "release": false }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "presetConfig": {
+          "types": [
+            { "type": "feat", "section": "Skills y funcionalidad nueva" },
+            { "type": "fix", "section": "Correcciones" },
+            { "type": "perf", "section": "Rendimiento" },
+            { "type": "refactor", "section": "Reorganización" },
+            { "type": "docs", "section": "Documentación", "hidden": false },
+            { "type": "test", "hidden": true },
+            { "type": "build", "hidden": true },
+            { "type": "ci", "hidden": true },
+            { "type": "chore", "hidden": true }
+          ]
+        }
+      }
+    ],
+    [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": "CHANGELOG.md",
+        "changelogTitle": "# Changelog\n\nLas versiones las decide [semantic-release](https://semantic-release.gitbook.io/) a partir de los mensajes de commit."
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "node scripts/sync-versions.mjs ${nextRelease.version} && node scripts/validate.mjs && node scripts/build-packages.mjs ${nextRelease.version}"
+      }
+    ],
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          ".claude-plugin/marketplace.json",
+          "plugins/*/.claude-plugin/plugin.json"
+        ],
+        "message": "chore(release): v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ],
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "dist/collie-skills-*.zip",
+            "label": "Marketplace completo (todos los plugins)"
+          },
+          {
+            "path": "dist/collie-architecture-*.zip",
+            "label": "Plugin architecture (8 skills)"
+          },
+          {
+            "path": "dist/collie-craft-*.zip",
+            "label": "Plugin craft (15 skills)"
+          },
+          {
+            "path": "dist/collie-testing-*.zip",
+            "label": "Plugin testing (11 skills)"
+          },
+          {
+            "path": "dist/collie-security-*.zip",
+            "label": "Plugin security (5 skills)"
+          },
+          {
+            "path": "dist/collie-stack-*.zip",
+            "label": "Plugin stack (9 skills)"
+          },
+          {
+            "path": "dist/collie-foundry-*.zip",
+            "label": "Plugin foundry (1 skill)"
+          }
+        ],
+        "successComment": false,
+        "failComment": false
+      }
+    ]
+  ]
+}

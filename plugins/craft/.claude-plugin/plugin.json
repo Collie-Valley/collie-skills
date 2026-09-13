@@ -1,0 +1,12 @@
+{
+  "name": "craft",
+  "displayName": "Craft",
+  "version": "0.1.0",
+  "description": "El oficio en Collie: las puertas de entrada y salida del trabajo, cómo se escribe y se revisa el código, y cómo se reporta el estado con honestidad.",
+  "author": {
+    "name": "Collie Valley",
+    "url": "https://github.com/Collie-Valley"
+  },
+  "repository": "https://github.com/Collie-Valley/collie-skills",
+  "keywords": ["definition-of-done", "code-review", "bdd", "spec-driven", "quality"]
+}
