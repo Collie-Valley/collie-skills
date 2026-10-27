@@ -16,7 +16,7 @@
       "source": "./plugins/foundry",
       "displayName": "Foundry",
       "description": "Trabajar contra los tableros de Foundry por el MCP foundry-boards, en cualquier proyecto.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Collie Valley",
         "url": "https://github.com/Collie-Valley"

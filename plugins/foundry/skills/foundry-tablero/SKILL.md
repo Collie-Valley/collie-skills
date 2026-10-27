@@ -13,9 +13,11 @@ Foundry), que se apoya en ésta.
 
 - Si las tools `mcp__foundry-boards__*` **no aparecen**, el MCP no está conectado: dilo en una
   línea y sigue con el trabajo sin tablero. No lo intentes ni inventes ids.
-- Si aparecen, `whoami` dice **quién eres y contra qué backend** — que no es lo mismo que
-  "conectado". El endpoint sale de `FOUNDRY_API_BASE` (el `.env` del MCP) y **solo cambia al
-  reiniciar Claude Code**: si estás operando contra producción, actúa como tal.
+- Si aparecen, `whoami` dice **quién eres, no contra qué backend**: eso lo dicen los datos
+  (`list_spaces`). El endpoint sale de `FOUNDRY_API_BASE`, en el `env` de la entrada
+  `foundry-boards` (el `.mcp.json` del proyecto o `~/.claude.json`); sin él, el MCP apunta a
+  **producción**. Si hay varias entradas, la de ámbito local le gana al `.mcp.json`. Solo cambia
+  **al reiniciar Claude Code**: si estás operando contra producción, actúa como tal.
 
 ## 1. Ubicarse (no supongas nada)
 
