@@ -1,0 +1,2 @@
+# Los hooks se ejecutan con bash: con CRLF (autocrlf en Windows) revientan en `$'\r'`.
+*.sh text eol=lf

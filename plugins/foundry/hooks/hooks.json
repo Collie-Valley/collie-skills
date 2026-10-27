@@ -1,0 +1,17 @@
+{
+  "description": "Al abrir sesión, avisa de que hay tablero de Foundry y a qué backend apunta el MCP foundry-boards.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/foundry-tablero.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

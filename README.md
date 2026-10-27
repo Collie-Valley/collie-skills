@@ -26,6 +26,13 @@ A partir de ahí las skills se cargan solas cuando la tarea las pide, y se actua
 > `foundry-tablero` es **genérica**: sirve contra cualquier tablero. Lo propio de un tablero
 > concreto vive en la skill de su repo — en Foundry, `tarjeta-fnv` — que se apoya en ésta.
 
+Y un hook de `SessionStart` ([`hooks/`](plugins/foundry/hooks/)): al abrir sesión, si hay MCP
+`foundry-boards`, le dice al agente que hay tablero y **a qué backend apunta** (LOCAL,
+PRODUCCION u otro). Lee la misma configuración que Claude Code, sin tocar la red: la entrada de
+ámbito local le gana al `.mcp.json` del proyecto (si no está en `disabledMcpjsonServers`), y éste
+a la de ámbito usuario; si otra entrada apunta a otro sitio, lo avisa. Necesita Python en el
+`PATH`; sin él, lo dice en vez de adivinar.
+
 ## Añadir una skill
 
 1. Créala en el plugin que le toque: `plugins/<plugin>/skills/<nombre>/SKILL.md`, con
@@ -46,6 +53,9 @@ plugins/
     .claude-plugin/plugin.json      el manifiesto del plugin
     skills/
       foundry-tablero/SKILL.md      una carpeta por skill
+    hooks/
+      hooks.json                    los hooks que trae el plugin
+      foundry-tablero.sh / .py      el aviso de SessionStart
 ```
 
 ## Trabajarla sin instalarla
@@ -62,3 +72,17 @@ primero no, y para una carpeta hacen lo mismo. En macOS/Linux, `ln -s`.
 
 Así se edita en un solo sitio. Reinicia Claude Code para que la vea. **No hagas las dos cosas**
 (instalar el plugin *y* enlazar): la skill saldría duplicada.
+
+El hook se trabaja igual, apuntando tu `~/.claude/settings.json` al script del repo:
+
+```json
+"hooks": {
+  "SessionStart": [
+    { "matcher": "startup|resume",
+      "hooks": [{ "type": "command", "timeout": 10,
+        "command": "bash \"D:/PROYECTOS/collie-valley/collie-skills/plugins/foundry/hooks/foundry-tablero.sh\"" }] }
+  ]
+}
+```
+
+Lo mismo aquí: con el plugin instalado, el aviso saldría dos veces.
